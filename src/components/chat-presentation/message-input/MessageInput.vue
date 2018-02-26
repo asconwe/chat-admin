@@ -1,7 +1,7 @@
 <template>
   <div class="message-input">
-    <ac-input-box class="input-box-position" :primeClear="primeClear" :handle-input="setMessage"/>
-    <ac-send-button class="send-button-position" :handle-submit="sendMessage"/>
+    <ac-input-box class="input-box-position" :primeClear="primeClear" :primeSetRef="primeSetRef" :handleInput="setMessage"/>
+    <ac-send-button class="send-button-position" :handleSubmit="sendMessage"/>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import InputBoxVue from './InputBox.vue'
 import SendButtonVue from './SendButton.vue'
 
 export default {
-  props: ['setMessage', 'sendMessage', 'primeClear'],
+  props: ['setMessage', 'sendMessage', 'primeClear', 'primeSetRef'],
   components: {
     'ac-input-box': InputBoxVue,
     'ac-send-button': SendButtonVue

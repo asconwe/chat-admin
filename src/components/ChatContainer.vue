@@ -1,10 +1,11 @@
 <template>
   <div>
     <ac-message-input 
-      :set-message="setMessage" 
+      :setMessage="setMessage" 
       :message="message" 
-      :send-message="sendMessage" 
-      :prime-clear="primeClear"/>
+      :sendMessage="sendMessage" 
+      :primeClear="primeClear"
+      :primeSetRef="primeSetRef"/>
   </div>
 </template>
 
@@ -19,22 +20,27 @@ export default {
   data () {
     return {
       message: '',
-      primedRef: undefined,
+      clearRef: undefined,
+      setRefInner: undefined,
       socket: io('http://localhost:3000/')
     }
   },
   methods: {
     setMessage (message) {
       this.message = message
+      this.setRefInner(message)
     },
     sendMessage () {
-      console.log(this.message)
-      this.primedRef.value = ''
       this.socket.emit('chat message', this.message)
       this.message = ''
+      // this.clearRef()
+      this.setRefInner('')
     },
-    primeClear (ref) {
-      this.primedRef = ref
+    primeClear (refClearFunc) {
+      this.clearRef = refClearFunc
+    },
+    primeSetRef (refSetFunc) {
+      this.setRefInner = refSetFunc
     }
   }
 }

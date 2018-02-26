@@ -5,13 +5,14 @@
           class="input-box textarea" 
           name="message-input" 
           id="message-input" 
-          @input="update"
+          @input="updateClone"
+          @focusout="updateParent"
           placeholder="..." 
           :style="`height: ${textareaHeight}px`"
           ref="message"
         />
         <div class="artificially-hidden">
-          <ac-import-box-clone class="input-box height-control" :applyCloneHeight="applyCloneHeight" :message="message"></ac-import-box-clone>
+          <ac-import-box-clone class="input-box height-control" :applyCloneHeight="applyCloneHeight" :message="messageForClone"></ac-import-box-clone>
         </div>
     </div>
 </template>
@@ -20,31 +21,35 @@
 import InputBoxClone from './InputBoxClone.vue'
 
 export default {
-  props: ['handleInput', 'primeClear'],
+  props: ['handleInput', 'primeClear', 'primeSetRef'],
   components: {
     'ac-import-box-clone': InputBoxClone
   },
   data () {
     return {
-      message: '',
+      messageForClone: '',
       textareaHeight: 40
     }
   },
   mounted () {
-    this.primeClear(this.$refs.message)
+    console.log(this.clearRef)
+    this.primeSetRef(this.setRefInner)
   },
   methods: {
     applyCloneHeight (height) {
       this.textareaHeight = height
     },
-    update: function (event) {
+    updateClone (event) {
+      this.messageForClone = event.target.innerText
+    },
+    updateParent (event) {
       const message = event.target.innerText
-      this.message = message
       this.handleInput(message)
+    },
+    setRefInner (message) {
+      this.$refs.message.innerHTML = message || ''
+      this.messageForClone = message || ''
     }
-    // clearMessage(value) {
-    //   this.$refs.message.value = value
-    // }
   }
 }
 </script>
