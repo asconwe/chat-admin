@@ -4,19 +4,18 @@
       <span>Vue.js PWA</span>
     </header>
     <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <hello></hello>
+      <ac-chat-container></ac-chat-container>
     </main>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import ChatContainer from 'components/ChatContainer'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    'ac-chat-container': ChatContainer
   }
 }
 </script>
