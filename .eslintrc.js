@@ -22,6 +22,10 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // no end of line error
+    'eol-last': 0,
+    // allow importing Vue in stories
+    'no-unused-vars': ["error", { "varsIgnorePattern": "Vue" }]
   }
 }

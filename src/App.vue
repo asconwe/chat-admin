@@ -13,7 +13,6 @@
 import ChatContainer from 'components/ChatContainer'
 
 export default {
-  name: 'app',
   components: {
     'ac-chat-container': ChatContainer
   }

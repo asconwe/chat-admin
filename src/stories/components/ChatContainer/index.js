@@ -1,9 +1,9 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import { storiesOf } from '@storybook/vue';
+import { storiesOf } from '@storybook/vue'
 
-import AppStyle from 'AppStyle.vue';
-import ChatContainer from 'components/ChatContainer.vue';
+import AppStyle from 'AppStyle.vue'
+import ChatContainer from 'components/ChatContainer.vue'
 
 storiesOf('ChatContainer', module)
   .add('story as a component', () => ({
@@ -13,4 +13,4 @@ storiesOf('ChatContainer', module)
         <chat-container />
       </app-style>
     `
-  }));
+  }))

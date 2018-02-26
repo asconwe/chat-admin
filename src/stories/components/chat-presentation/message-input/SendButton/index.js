@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
 import { storiesOf } from '@storybook/vue'
 
@@ -6,7 +6,6 @@ import SendButton from 'components/chat-presentation/message-input/SendButton.vu
 
 storiesOf('SendButton', module)
   .add('story as a component', () => ({
-      components: { SendButton },
-      template: '<send-button />',
-    })
-  )
+    components: { SendButton },
+    template: '<send-button />'
+  }))

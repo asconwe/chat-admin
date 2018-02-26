@@ -1,9 +1,9 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 
-import { storiesOf } from '@storybook/vue';
+import { storiesOf } from '@storybook/vue'
 
-import AppStyle from 'AppStyle.vue';
-import InputBox from 'components/chat-presentation/message-input/InputBox.vue';
+import AppStyle from 'AppStyle.vue'
+import InputBox from 'components/chat-presentation/message-input/InputBox.vue'
 
 storiesOf('InputBox', module)
   .add('story as a component', () => ({
@@ -12,5 +12,5 @@ storiesOf('InputBox', module)
         <app-style>
             <input-box />
         </app-style>        
-    `,
-  }));
+    `
+  }))
