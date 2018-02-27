@@ -1,46 +1,38 @@
 <template>
   <div>
-    <ac-message-input 
-      :setMessage="setMessage" 
-      :message="message" 
-      :sendMessage="sendMessage" 
-      :primeClear="primeClear"
-      :primeSetRef="primeSetRef"/>
+    <ac-message-input>
+      <ac-input-box slot="input-box">
+        <div v-contenteditable="message" class="input-box"/>
+      </ac-input-box>
+      <ac-send-button slot="send-button" class="send-button-position" :handleSubmit="sendMessage"/>
+    </ac-message-input>    
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client'
 import MessageInput from 'components/chat-presentation/message-input/MessageInput.vue'
+import SendButton from 'components/chat-presentation/message-input/SendButton.vue'
+import InputBox from 'components/chat-presentation/message-input/InputBox.vue'
 
 export default {
+  props: ['socketUrl'],
   components: {
-    'ac-message-input': MessageInput
+    'ac-message-input': MessageInput,
+    'ac-send-button': SendButton,
+    'ac-input-box': InputBox
   },
   data () {
     return {
       message: '',
-      clearRef: undefined,
-      setRefInner: undefined,
-      socket: io('http://localhost:3000/')
+      socket: io(this.socketUrl)
     }
   },
   methods: {
-    setMessage (message) {
-      this.message = message
-      this.setRefInner(message)
-    },
     sendMessage () {
+      console.log(this.message)
       this.socket.emit('chat message', this.message)
       this.message = ''
-      // this.clearRef()
-      this.setRefInner('')
-    },
-    primeClear (refClearFunc) {
-      this.clearRef = refClearFunc
-    },
-    primeSetRef (refSetFunc) {
-      this.setRefInner = refSetFunc
     }
   }
 }

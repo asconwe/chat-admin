@@ -1,24 +1,19 @@
 <template>
   <div class="message-input">
-    <ac-input-box class="input-box-position" :primeClear="primeClear" :primeSetRef="primeSetRef" :handleInput="setMessage"/>
-    <ac-send-button class="send-button-position" :handleSubmit="sendMessage"/>
+    <div class="input-box-position">
+      <slot name="input-box"/>
+    </div>
+    <div>
+      <slot name="send-button" />
+    </div>
   </div>
 </template>
 
 <script>
-import InputBoxVue from './InputBox.vue'
-import SendButtonVue from './SendButton.vue'
-
-export default {
-  props: ['setMessage', 'sendMessage', 'primeClear', 'primeSetRef'],
-  components: {
-    'ac-input-box': InputBoxVue,
-    'ac-send-button': SendButtonVue
-  }
-}
+export default {}
 </script>
 
-<style scoped>
+<style>
   .message-input {
     position: absolute;
     bottom: 0;
