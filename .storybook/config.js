@@ -14,6 +14,8 @@ function loadStories () {
   require('stories/components/chat-presentation/message-input/SendButton')
   require('stories/components/chat-presentation/message-input/InputBox')
   require('stories/components/chat-presentation/message-input/MessageInput')
+  require('stories/components/chat-presentation/chat-display/Message')
+  require('stories/components/chat-presentation/chat-display/ChatDisplay')
 }
 
 configure(loadStories, module)
