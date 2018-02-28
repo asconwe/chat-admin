@@ -2,7 +2,7 @@
   <div>
     <ac-message-input>
       <ac-input-box slot="input-box">
-        <div v-contenteditable="message" class="input-box"/>
+        <div v-contenteditable="message" @keydown.enter.exact.prevent="sendMessage"class="input-box"/>
       </ac-input-box>
       <ac-send-button slot="send-button" class="send-button-position" :handleSubmit="sendMessage"/>
     </ac-message-input>    
@@ -30,10 +30,12 @@ export default {
   },
   methods: {
     sendMessage () {
-      console.log(this.message)
       this.socket.emit('chat message', this.message)
       this.message = ''
     }
+    // TODO
+    // Map ctl.enter, meta.enter, and alt.enter to shif.enter
+    // dispatchShiftEnter method
   }
 }
 </script>
