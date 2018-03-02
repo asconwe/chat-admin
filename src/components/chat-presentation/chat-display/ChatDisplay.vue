@@ -1,5 +1,6 @@
 <template>
   <div class="chat-display">
+    <span />
     <ac-message 
       v-for="(message, index) in messages" 
       :message="message.message" 
@@ -23,8 +24,14 @@ export default {
 
 <style scoped>
 .chat-display {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  background: red;
-  height: 100px;
+  height: 100%;
+  overflow: auto;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  -ms-grid-columns: 1fr auto;
 }
 </style>

@@ -19,17 +19,23 @@ export default {
 }
 .message {
   max-width: 75%;
-  min-height: 32px;
-  border-radius: 16px;
-  padding: 8px;
+  margin-bottom: 4px;
+  padding: 4px;
   line-height: 16px;
 }
 .message.received {
-  float: left;
-  background: yellow;
+  float: right;
+  /* background: yellow; */
+}
+.message.received::before {
+  content: '-';
 }
 .message.sent {
-  float: right;
-  background: lightblue;
+  float: left;
+  /* background: lightblue; */
+}
+
+.message.sent::after {
+  content: '-';
 }
 </style>
