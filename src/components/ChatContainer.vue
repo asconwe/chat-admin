@@ -1,37 +1,34 @@
 <template>
   <div>
-    <ac-message-input>
-      <ac-input-box slot="input-box">
-        <div v-contenteditable="message" @keydown.enter.exact.prevent="sendMessage"class="input-box"/>
-      </ac-input-box>
-      <ac-send-button slot="send-button" class="send-button-position" :handleSubmit="sendMessage"/>
-    </ac-message-input>    
+    <ac-chat :send-message="sendMessage" :messages="messages" :message="message">
+      <div v-contenteditable="message" @keydown.enter.exact.prevent="sendMessage" class="input-box"/>
+    </ac-chat>   
   </div>
 </template>
 
 <script>
 import io from 'socket.io-client'
-import MessageInput from 'components/chat-presentation/message-input/MessageInput.vue'
-import SendButton from 'components/chat-presentation/message-input/SendButton.vue'
-import InputBox from 'components/chat-presentation/message-input/InputBox.vue'
+import Chat from './chat-presentation/Chat.vue'
+import Vue from 'vue'
 
 export default {
-  props: ['socketUrl'],
+  props: ['socketUrl', 'name'],
   components: {
-    'ac-message-input': MessageInput,
-    'ac-send-button': SendButton,
-    'ac-input-box': InputBox
+    'ac-chat': Chat
   },
   data () {
     return {
       message: '',
-      socket: io(this.socketUrl)
+      socket: io(this.socketUrl),
+      messages: []
     }
   },
   methods: {
     sendMessage () {
+      const newMessages = this.messages.concat({ message: this.message, received: false })
       this.socket.emit('chat message', this.message)
       this.message = ''
+      this.messages = newMessages
     }
     // TODO
     // Map ctl.enter, meta.enter, and alt.enter to shif.enter

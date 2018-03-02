@@ -60,6 +60,9 @@ table {
 	border-spacing: 0;
 }
 /*  End reset.css */
+html, body, .app-style, #root {
+	height: 100%;
+}
 
 .app-style * {
 	box-sizing: border-box;
