@@ -25,14 +25,12 @@ export default {
 }
 .message.received {
   float: right;
-  /* background: yellow; */
 }
 .message.received::before {
   content: '-';
 }
 .message.sent {
   float: left;
-  /* background: lightblue; */
 }
 
 .message.sent::after {
