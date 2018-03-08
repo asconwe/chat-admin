@@ -22,6 +22,7 @@ export default {
   margin-bottom: 4px;
   padding: 4px;
   line-height: 16px;
+  word-wrap: break-word;
 }
 .message.received {
   float: right;
